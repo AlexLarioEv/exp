@@ -9,14 +9,12 @@ from matplotlib import style
 from dateutil import parser as dt_parser
  
 headers = ['signal']
-data = pd.read_csv("./DataExp/DATA2_2023-04-11_0_153133.Wfm.csv", sep='\t', names=headers)
+data = pd.read_csv("/Users/sasch/Desktop/Диплом/exp/DataExp/DATA8.csv", sep='\t', names=headers)
 data= data.assign(time= data.index + 1)
 
-timeData= data["time"]
 signalData = data["signal"]
 fs= 100000
 time = np.linspace(0, 10, fs*10)
-
 
 def fftSignal(signalData, time ):
     freq_domain = np.fft.fft(signalData)
@@ -44,11 +42,11 @@ def filterButterSignal(signalData, time, cutoff_freq, fs, order=4):
 
 freq_mag=fftSignal(signalData, time)
 
-filterSignalPusle = filterButterSignal(signalData, time, 0.4, fs, 4)
+filterSignalPulse = filterButterSignal(signalData, time, 10, fs, 4)
 
-freq_mag=fftSignal(filterSignalPusle, time)
+freq_mag=fftSignal(filterSignalPulse, time)
 
-# filterSignalWaves = filterButterSignal(filterSignalPusle, time, 0.4, fs)
+# filterSignalWaves = filterButterSignal(filterSignalPulse, time, 0.4, fs)
 
 
 peaks, _ = find_peaks(freq_mag[3:8])
