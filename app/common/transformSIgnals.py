@@ -3,7 +3,7 @@ import numpy as np
 from scipy.signal import butter, filtfilt,decimate
 from scipy.interpolate import UnivariateSpline
 
-from chartBuilder import *
+from common import *
 from constants import *
 
 def decimateSignal(signal, fs, k):
