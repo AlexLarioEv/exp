@@ -3,8 +3,7 @@ import numpy as np
 from scipy.signal import butter, filtfilt,decimate
 from scipy.interpolate import UnivariateSpline
 
-from common import *
-from constants import *
+from constants import FREQUENCY_WINDOW
 
 def decimateSignal(signal, fs, k):
     signal = decimate(signal, k)   
@@ -12,7 +11,7 @@ def decimateSignal(signal, fs, k):
     return signal, fs
 
 def filterButter(signal_data, cutoff_freq, fs, order=4):
-    nyq_freq = 0.5*fs
+    nyq_freq = 0.5 * fs
     b, a = butter(order, cutoff_freq/nyq_freq, btype='low')
     filter_signal = filtfilt(b, a, signal_data)
 
@@ -30,7 +29,7 @@ def fftSignal(signal_data, time ):
 def spliningSignal(signal, s, fs, spline_degree = 3):
     time = np.arange(len(signal))/fs
     spline_smoothing_factor = 0.001 * len(signal)*s
-    spline = UnivariateSpline(time, signal, k=spline_degree, s=spline_smoothing_factor)
+    spline = UnivariateSpline(time, signal, k = spline_degree, s = spline_smoothing_factor)
     splineSignal = spline(time)
     return splineSignal, time
 
@@ -41,7 +40,7 @@ def cutSignal(signal, fs):
     # отрезаем начало и конец до первого и последнего знака
     trimmed_signal = signal[zero_crossings[0]+1:zero_crossings[-1]+1]
 
-    time = np.arange(len(trimmed_signal))/fs
+    time = np.arange(len(trimmed_signal)) / fs
 
     return trimmed_signal, time
 
@@ -50,7 +49,7 @@ def cutSignal(signal, fs):
     zero_crossings = np.where(np.diff(np.sign(signal)))[0]
 
     # отрезаем начало и конец до первого и последнего знака
-    trimmed_signal = signal[zero_crossings[0]+1:zero_crossings[-1]+1]
+    trimmed_signal = signal[zero_crossings[0] + 1:zero_crossings[-1] + 1]
 
     time = np.arange(len(trimmed_signal))/fs
 
@@ -63,12 +62,12 @@ def normalizeSignal(signal):
     min_peak = -min(signal)
 
     if(max_peak>min_peak):
-        return signal/max_peak
+        return signal / max_peak
     
-    return signal/min_peak
+    return signal / min_peak
 
 def splitSignal(signal, separators):
-    counter=0
+    counter = 0
     start_separator = 0
     signals={}
 
@@ -76,7 +75,7 @@ def splitSignal(signal, separators):
         end_separator = i
         part_of_signal = signal[start_separator:end_separator]
         start_separator = end_separator
-        signals[counter]=part_of_signal
+        signals[counter] = part_of_signal
         counter = counter + 1
 
     return signals
