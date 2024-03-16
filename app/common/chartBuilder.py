@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import matplotlib
 
 def chartBuilder(x, y, pick = None, title = '', label = '', nameX = 'ось X', nameY = 'ось Y'):
     plt.plot(x, y , label=label )
@@ -13,7 +12,8 @@ def chartBuilder(x, y, pick = None, title = '', label = '', nameX = 'ось X', 
     plt.show()
 
 # Info: Передаем в axs второй выхождной параметр plt.subplots
-
+# fix me: надо предложить какой-то другой вариант построение мулти гравиков
+    
 def multipleChartBuilder(axs, x, y, pick = None, label='',nameX = 'ось X',nameY = 'ось Y', count = 0): 
     axs[count].plot(x, y, label=label)
 

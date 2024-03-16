@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 from scipy.signal import find_peaks
 
-from signalPulse import signal, fs
+from cleanSignal import signal, fs
 from common import  getTimeSignal, spliningSignal, filterButter, normalizeSignal,splitSignal, chartBuilder, multipleChartBuilder
 
 basic_line_signal, time = spliningSignal(signal, 10, fs)
