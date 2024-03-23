@@ -15,7 +15,7 @@ def chartBuilder(x, y, pick = None, title = '', label = '', nameX = 'ось X', 
 # fix me: надо предложить какой-то другой вариант построение мулти гравиков
     
 def multipleChartBuilder(axs, x, y, pick = None, label='',nameX = 'ось X',nameY = 'ось Y', count = 0): 
-    axs[count].plot(x, y, label=label)
+    axs[count].plot(x, y, label = label)
 
     if pick is not None:
         axs[count].plot(x[pick], y[pick], '*')
@@ -27,11 +27,13 @@ def multipleChartBuilder(axs, x, y, pick = None, label='',nameX = 'ось X',nam
     axs[count].legend()
     return multipleChartBuilder
 
-def wrappermultChartBuilder(fn): 
-    fig, axs = plt.subplots(2, 1, figsize=(8, 6))
-    fn(axs, ...)
-    plt.tight_layout()
-    plt.show()
+# def showSubChart(chartSubBuilder):
+#     fig, axs = plt.subplots(2, 1, figsize=(8, 6))
+#     def wrapper():
+
+#         chartSubBuilder()
+#         plt.tight_layout()
+#         plt.show()
     
 
 # График исходного сигнала и сплайна

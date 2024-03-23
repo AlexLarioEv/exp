@@ -1,6 +1,6 @@
 import numpy as np
 
-from cleanSignal import clean_signal, fs, time
+from getCleanSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
 from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, filterButter, normalizeSignal, getTimeSignal, splitSignal, cutSignal
@@ -8,7 +8,7 @@ from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal
 # Поиск оптимального коэффициента сглаживания сплайна для выделения дыхательных волн
 # TODO: Надо изменить условие выхода из цикла и
 # fix me: DATA4 алогритм не работает однако в старом билде все ок. Предварительно из-за децимация. Если увеличить точность (step) все ок.
-arr = np.arange(start=0.01, stop=10.01, step=0.01)
+arr = np.arange(start=0.01, stop=10.01, step=0.005)
 
 for i in arr:
 
