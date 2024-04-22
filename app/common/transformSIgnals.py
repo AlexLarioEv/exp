@@ -79,3 +79,10 @@ def splitSignal(signal, separators):
         counter = counter + 1
 
     return signals
+
+# Среднее значение числового ряда
+def mean(xs): 
+    return sum(xs) / len(xs) 
+
+def compoundPeaks(min, max): 
+    return sorted([*min, *max])

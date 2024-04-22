@@ -22,9 +22,7 @@ for i in arr:
         # print(i)
         # print('breath',freq_scale[peaks][0])
         # # Вывод пиков на графике
-        # plt.plot(freq_scale, freg_mag)
-        # plt.plot(freq_scale[peaks], freg_mag[peaks], "x")
-        # plt.show()
+        # chartBuilder(freq_scale, freg_mag, peaks)
         break
 
 
@@ -32,4 +30,4 @@ resperator_signal, time_res = cutSignal(resperator_signal, fs)
 resperator_signal  = normalizeSignal(resperator_signal)
 peaks_res , _ = find_peaks(resperator_signal)
 
-# chartBuilder(time_res, resperator_signal, peaks_res, label = 'Дыхательные волны', nameX = 'Время', nameY = 'Амплитуда')
+chartBuilder(time_res, resperator_signal, peaks_res, label = 'Дыхательные волны', nameX = 'Время', nameY = 'Амплитуда')
