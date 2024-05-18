@@ -16,7 +16,7 @@ for i in arr:
     
     freg_mag, freq_scale = fftSignal(resperator_signal, time)
     
-    peaks, _ = find_peaks(freg_mag[(freq_scale >= 0) & (freq_scale <= 50)])
+    peaks, _ = find_peaks(freg_mag[(freq_scale >= 0) & (freq_scale <= 5)])
 
     if len(peaks)<=1:
         # print(i)

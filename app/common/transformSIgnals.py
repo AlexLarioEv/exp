@@ -1,7 +1,8 @@
 import numpy as np
 
-from scipy.signal import butter, filtfilt,decimate
+from scipy.signal import butter, filtfilt,decimate,freqz
 from scipy.interpolate import UnivariateSpline
+import matplotlib.pyplot as plt
 
 from constants import FREQUENCY_WINDOW
 
@@ -13,6 +14,15 @@ def decimateSignal(signal, fs, k):
 def filterButter(signal_data, cutoff_freq, fs, order=4):
     nyq_freq = 0.5 * fs
     b, a = butter(order, cutoff_freq/nyq_freq, btype='low')
+    w, h = freqz(b, a, worN=8000)
+    freq = w * fs / (2 * np.pi)
+    plt.semilogx(freq, 20*np.log10(abs(h)))
+    plt.title('Амплитудная характеристика фильтра Баттерворта')
+    plt.xlabel('Частота (Гц)')
+    plt.ylabel('Амплитуда (дБ)')
+    plt.margins(0, 0.1)
+    plt.grid(which='both', axis='both')
+    plt.show()
     filter_signal = filtfilt(b, a, signal_data)
 
     return filter_signal
