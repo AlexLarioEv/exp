@@ -1,7 +1,7 @@
 import numpy as np
 
 from scipy.signal import find_peaks
-from getOpenSignal import clean_signal, time, fs as fs_signal
+from service.getOpenSignal import clean_signal, time, fs as fs_signal
 from breath import resperator_signal, time_res, peaks_res, fs as fs_res
 from common import getTimeSignal, splitSignal, multipleChartBuilder, chartBuilder, filterButter,fftSignal
 

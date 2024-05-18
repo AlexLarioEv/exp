@@ -1,6 +1,6 @@
 import numpy as np
 
-from getOpenSignal import clean_signal, fs, time
+from service.getOpenSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
 from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, normalizeSignal, getTimeSignal
