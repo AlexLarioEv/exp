@@ -1,13 +1,10 @@
 import numpy as np
 
-from getCleanSignal import clean_signal, fs, time
+from getOpenSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
-from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, filterButter, normalizeSignal, getTimeSignal, splitSignal, cutSignal
+from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, normalizeSignal, getTimeSignal
 
-# Поиск оптимального коэффициента сглаживания сплайна для выделения дыхательных волн
-# TODO: Надо изменить условие выхода из цикла и
-# fix me: DATA4 алогритм не работает однако в старом билде все ок. Предварительно из-за децимация. Если увеличить точность (step) все ок.
 arr = np.arange(start=0.01, stop=10.01, step=0.005)
 
 for i in arr:
@@ -25,9 +22,12 @@ for i in arr:
         # chartBuilder(freq_scale, freg_mag, peaks)
         break
 
-
-resperator_signal, time_res = cutSignal(resperator_signal, fs)
 resperator_signal  = normalizeSignal(resperator_signal)
-peaks_res , _ = find_peaks(resperator_signal)
+time_res = getTimeSignal(resperator_signal, fs)
+
+max_peaks_res , _ = find_peaks(resperator_signal)
+min_peaks_res , _ = find_peaks(-resperator_signal)
+
+peaks_res = sorted([*min_peaks_res, *max_peaks_res])
 
 chartBuilder(time_res, resperator_signal, peaks_res, label = 'Дыхательные волны', nameX = 'Время', nameY = 'Амплитуда')
