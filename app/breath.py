@@ -1,6 +1,6 @@
 import numpy as np
 
-from getCleanSignal import clean_signal, fs, time
+from getOpenSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
 from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, normalizeSignal, getTimeSignal
@@ -26,4 +26,4 @@ min_peaks_res , _ = find_peaks(-resperator_signal)
 
 peaks_res = sorted([*min_peaks_res, *max_peaks_res])
 
-# chartBuilder(time_res, resperator_signal, peaks_res, label = 'Дыхательные волны', nameX = 'Время', nameY = 'Амплитуда')
+chartBuilder(time_res, resperator_signal, peaks_res, label = 'Дыхательные волны', nameX = 'Время', nameY = 'Амплитуда')

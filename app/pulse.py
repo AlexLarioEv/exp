@@ -1,9 +1,9 @@
 import numpy as np
 
-from getCleanSignal import clean_signal, fs, time
+from getOpenSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
-from common import chartBuilder, multipleChartBuilder, fftSignal, filterButter, normalizeSignal, getTimeSignal, splitSignal, cutSignal
+from common import chartBuilder, fftSignal, filterButter, normalizeSignal
 
 puls_signal = filterButter(clean_signal, 5, fs)
 

@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 from scipy.signal import find_peaks
 
-from getCleanSignal import signal, fs
+from getRealSignal import signal, fs
 from common import  getTimeSignal, spliningSignal, filterButter, normalizeSignal,splitSignal, chartBuilder, multipleChartBuilder
 
 basic_line_signal, time = spliningSignal(signal, 10, fs)
@@ -17,9 +17,11 @@ chartBuilder(time, filter_signal_norm, peaks_pulse_min, "Сигнал после
 
 signals = splitSignal(filter_signal_norm,peaks_pulse_min)
 
+print(signals)
+
 fig, axs = plt.subplots(2, 1, figsize=(8, 6))
 
-multipleChartBuilder( axs ,getTimeSignal(signals[11],fs),signals[11], count = 0)( axs ,getTimeSignal(signals[12],fs),signals[12], count = 1)
+multipleChartBuilder( axs ,getTimeSignal(signals[0],fs),signals[0], count = 0)( axs ,getTimeSignal(signals[1],fs),signals[1], count = 1)
 
 plt.tight_layout()
 plt.show()
