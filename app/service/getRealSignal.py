@@ -17,13 +17,13 @@ def getSignal(path, name):
         return getSignal(path, name)
 
 
-signal = getSignal('./db/real/DATA8.csv', 'pulse_wave')
+signal = getSignal('./db/real/DATA10.csv', 'pulse_wave')
 signal = signal[::-1]
 signal, fs = decimateSignal(signal, fs, 100)
 time = getTimeSignal(signal, fs)
 
 
-chartBuilder(time, signal,title="Исходный сигнал", label="Сигнал пульсовой волны", nameX="Время", nameY="Напряжение")
+# chartBuilder(time, signal,title="Исходный сигнал", label="Сигнал пульсовой волны", nameX="Время", nameY="Напряжение")
 
 basic_line_signal, time = spliningSignal(signal, 10, fs)
 clean_signal = signal - basic_line_signal
