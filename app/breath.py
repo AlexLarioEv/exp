@@ -1,6 +1,6 @@
 import numpy as np
 
-from service.getOpenSignal import clean_signal, fs, time
+from service.getRealSignal import clean_signal, fs, time
 from scipy.signal import find_peaks
 
 from common import chartBuilder, multipleChartBuilder, spliningSignal, fftSignal, normalizeSignal, getTimeSignal
@@ -13,7 +13,7 @@ for i in arr:
     
     freg_mag, freq_scale = fftSignal(resperator_signal, time)
     
-    peaks, _ = find_peaks(freg_mag[(freq_scale >= 0) & (freq_scale <= 5)])
+    peaks, _ = find_peaks(freg_mag[(freq_scale >= 0) & (freq_scale <= 50)])
 
     if len(peaks)<=1:
         # print(i)

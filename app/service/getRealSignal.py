@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common import decimateSignal, getTimeSignal, spliningSignal, chartBuilder, multipleChartBuilder, mean
+from common import decimateSignal, getTimeSignal, spliningSignal, chartBuilder, mean
 from constants import fs
 
 
@@ -17,14 +17,13 @@ def getSignal(path, name):
         return getSignal(path, name)
 
 
-signal = getSignal('./db/real/DATA1.csv', 'pulse_wave')
+signal = getSignal('./db/real/DATA8.csv', 'pulse_wave')
+signal = signal[::-1]
 signal, fs = decimateSignal(signal, fs, 100)
 time = getTimeSignal(signal, fs)
 
-time_old = time
-signal_old=signal
 
-# chartBuilder(time, signal,title="Исходный сигнал", label="Сигнал пульсовой волны", nameX="Время", nameY="Напряжение")
+chartBuilder(time, signal,title="Исходный сигнал", label="Сигнал пульсовой волны", nameX="Время", nameY="Напряжение")
 
 basic_line_signal, time = spliningSignal(signal, 10, fs)
 clean_signal = signal - basic_line_signal

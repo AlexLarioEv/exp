@@ -1,2 +1,2 @@
 from .chartBuilder import *
-from .transformSIgnals import *
+from .transformSignals import *
