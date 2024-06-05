@@ -2,8 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from common import spliningSignal, chartBuilder
+from constants import fs, DATA_OPEN
 
-filepath_bidmc = './db/open/bidmc_53_Signals.csv'
+filepath_bidmc = f'{DATA_OPEN}bidmc_53_Signals.csv'
 data_bidmc = pd.read_csv(filepath_bidmc)
 
 # Удаление пробелов из имен столбцов

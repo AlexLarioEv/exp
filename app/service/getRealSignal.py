@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common import decimateSignal, getTimeSignal, spliningSignal, chartBuilder, mean
-from constants import fs
+from constants import fs, DATA_REAL
 
 
 def getSignal(path, name):
@@ -11,13 +11,12 @@ def getSignal(path, name):
         signal = data[name]
         return signal
     except:
-        print('Error: requesting data')
-        print('Enter the path')
-        path = input()
+        print('Enter the name file')
+        path = f'{DATA_REAL}{input()}.csv'
         return getSignal(path, name)
 
 
-signal = getSignal('./db/real/DATA2.csv', 'pulse_wave')
+signal = getSignal(f'{DATA_REAL}DATA.csv', 'pulse_wave')
 signal = signal[::-1]
 signal, fs = decimateSignal(signal, fs, 100)
 time = getTimeSignal(signal, fs)
