@@ -22,12 +22,12 @@ for i in range(max_length):
 
 print(rows)
 
-# Открытие файла для записи начальных данных
+# Открытие файла для записи начальных данных 
 # with open('./db/statistics/dataBreath.csv', 'w', newline='', encoding='utf-8') as file:
 #     writer = csv.writer(file)
 #     writer.writerows(rows)
 
-# # Открытие файла для добавления данных в конец файла
+# Открытие файла для добавления данных в конец файла 
 with open('./db/statistics/dataBreath.csv', 'a', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerows(rows)

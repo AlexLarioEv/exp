@@ -14,12 +14,12 @@ data= data.fillna(data.mean())
 time = 'exhalationTime'
 frequency = 'exhalationFrequency'
 
-# Шаг 3: Корреляционный анализ
+# Шаг 2: Корреляционный анализ
 # Корреляция Пирсона
 pearson_corr, pearson_p = pearsonr(data[time].dropna(), data[frequency].dropna())
 print(f'Pearson correlation: {pearson_corr}, p-value: {pearson_p}')
 
-# Шаг 4: Регрессионный анализ
+# Шаг 3: Регрессионный анализ
 # Линейная регрессия
 X = data[time].values.reshape(-1, 1)
 y = data[frequency].values
@@ -42,7 +42,7 @@ plt.show()
 r2 = r2_score(y, y_pred)
 print(f'Determination coefficient (R^2) {r2}')
 
-# Шаг 5: Статистическая значимость
+# Шаг 4: Статистическая значимость
 # Оценка значимости коэффициентов регрессии
 X = sm.add_constant(X)  # Добавление константы для расчета интерсепта
 model = sm.OLS(y, X).fit()
