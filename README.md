@@ -56,9 +56,9 @@ exp/
 │   │   └── open_data.csv
 |   |       ...
 │   ├── real/                       - ваши данные из реальных источников
-│   │   └── processed_data.csv
+│   │   └── real_data.csv
 |   |       ...
-│   └── statistics/                 - ваши данные из для статистический
+│   └── statistics/                 - ваши данные для статистический
 │       └── dataBreath.csv
 │
 ├── app/
