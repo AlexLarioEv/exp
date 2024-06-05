@@ -17,11 +17,10 @@ def getSignal(path, name):
         return getSignal(path, name)
 
 
-signal = getSignal('./db/real/DATA10.csv', 'pulse_wave')
+signal = getSignal('./db/real/DATA2.csv', 'pulse_wave')
 signal = signal[::-1]
 signal, fs = decimateSignal(signal, fs, 100)
 time = getTimeSignal(signal, fs)
-
 
 # chartBuilder(time, signal,title="Исходный сигнал", label="Сигнал пульсовой волны", nameX="Время", nameY="Напряжение")
 
