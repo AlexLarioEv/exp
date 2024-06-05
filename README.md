@@ -47,6 +47,7 @@ python app/statistic.py
 
 # Файловая структура алгоритма
 
+```
 project_root/
 │
 ├── db/
@@ -80,3 +81,4 @@ project_root/
 ├── image.png                       - рисунок получившейся регрессионной модели 
 ├── README.md
 └── .gitignore
+```
